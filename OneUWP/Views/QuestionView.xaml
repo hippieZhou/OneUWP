@@ -1,0 +1,31 @@
+﻿<UserControl
+    x:Class="OneUWP.Views.QuestionView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OneUWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <UserControl.Transitions>
+        <TransitionCollection>
+            <EdgeUIThemeTransition Edge="Left"/>
+        </TransitionCollection>
+    </UserControl.Transitions>
+
+    <StackPanel DataContext="{Binding Question}">
+        <StackPanel Margin="12" Height="48">
+            <TextBlock Text="{Binding QuestionMarketTime}" FontSize="20"/>
+            <Border Height="1" Background="LightGray" Margin="0,6,0,0"/>
+        </StackPanel>
+        <Image Source="ms-appx:///Assets/question.png" HorizontalAlignment="Center" Height="40"/>
+        <TextBlock Text="{Binding QuestionTitle}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap" Margin="12"/>
+        <TextBlock Text="{Binding QuestionContent}" TextWrapping="Wrap" Margin="12"/>
+        <Border Height="1" Background="LightGray" Margin="12"/>
+        <Image Source="ms-appx:///Assets/answer.png" HorizontalAlignment="Center" Height="40"/>
+        <TextBlock Text="{Binding AnswerTitle}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap" Margin="12"/>
+        <TextBlock Text="{Binding AnswerContent,Converter={StaticResource htmlConverter}}" TextWrapping="Wrap" Margin="12"/>
+        <TextBlock Text="{Binding Editor}" TextWrapping="Wrap" Margin="12,24,12,12"/>
+        <!--<HyperlinkButton Content="查看原文" NavigateUri="{Binding WebLk}" HorizontalAlignment="Right" Margin="24"/>-->
+    </StackPanel>
+
+</UserControl>

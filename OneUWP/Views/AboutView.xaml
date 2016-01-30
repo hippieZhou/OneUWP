@@ -1,0 +1,41 @@
+﻿<UserControl
+    x:Class="OneUWP.Views.AboutView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OneUWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <UserControl.Transitions>
+        <TransitionCollection>
+            <EdgeUIThemeTransition Edge="Left"/>
+        </TransitionCollection>
+    </UserControl.Transitions>
+
+    <StackPanel Margin="0,48,0,0">
+        <StackPanel>
+            <TextBlock Text="每天只为你准备一张图片、一篇文字和一个问答" HorizontalAlignment="Center" />
+            <TextBlock Text="韩寒主编和监制 原《独唱团》主创成员共同制作" HorizontalAlignment="Center"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="ms-appx:///Assets/QRCode/android.png" Stretch="Uniform" Margin="12"/>
+                <Image Grid.Column="1" Source="ms-appx:///Assets/QRCode/iphone.png" Stretch="Uniform" Margin="12"/>
+                <Image Grid.Column="2" Source="ms-appx:///Assets/QRCode/iphone.png" Stretch="Uniform" Margin="12"/>
+                <Image Grid.Column="3" Source="ms-appx:///Assets/QRCode/wx.png" Stretch="Uniform" Margin="12"/>
+            </Grid>
+            <TextBlock Text="- 也可搜索 -" HorizontalAlignment="Center"/>
+            <TextBlock Text="&quot;韩寒一个&quot; 或 &quot;ONE一个&quot;" HorizontalAlignment="Center" Foreground="{StaticResource DefaultBackgroundColor}"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right" Opacity="0.2" Margin="12">
+            <TextBlock Text="Design By hippieZhou" Style="{StaticResource CaptionTextBlockStyle}" Tag="http://www.cnblogs.com/hippieZhou"/>
+            <TextBlock Text="COCO_ZLL" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Right" Tag="http://www.zcool.com.cn/u/13775647"/>
+            <TextBlock x:Name="tbVersion" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Right" Margin="0,0,4,0"/>
+        </StackPanel>
+    </StackPanel>
+
+</UserControl>

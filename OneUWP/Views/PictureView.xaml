@@ -1,0 +1,46 @@
+﻿<UserControl
+    x:Class="OneUWP.Views.PictureView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OneUWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <UserControl.Transitions>
+        <TransitionCollection>
+            <EdgeUIThemeTransition Edge="Left"/>
+        </TransitionCollection>
+    </UserControl.Transitions>
+
+
+    <StackPanel DataContext="{Binding Picture}">
+        <StackPanel Margin="12">
+            <TextBlock Text="{Binding HpTitle}" FontSize="20"/>
+            <Border Height="1" Background="LightGray" Margin="0,6,0,0"/>
+        </StackPanel>
+        <Image x:Name="img" MinWidth="400" Margin="12" Source="{Binding OriginalImgUrl}" HorizontalAlignment="Center"/>
+        <StackPanel Margin="12" HorizontalAlignment="Right">
+            <TextBlock Text="{Binding Author,Converter={StaticResource titleConverter}}" HorizontalAlignment="Right"/>
+            <TextBlock Text="{Binding Author,Converter={StaticResource authorConverter}}" HorizontalAlignment="Right"/>
+        </StackPanel>
+        <Grid Margin="12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" FontSize="24" FontWeight="Bold" Foreground="{StaticResource DefaultBackgroundColor}" Text="{Binding MarketTime,Converter={StaticResource dayConverter}}" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="1" Text="{Binding MarketTime,Converter={StaticResource yearConverter}}" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1" CornerRadius="15" Background="{StaticResource DefaultBackgroundColor}">
+                <TextBlock Text="{Binding Content}" Foreground="White" TextWrapping="Wrap" Margin="12" HorizontalAlignment="Center"/>
+            </Grid>
+        </Grid>
+        <!--<HyperlinkButton Content="查看原文" NavigateUri="{Binding WebLk}" HorizontalAlignment="Right" Margin="24"/>-->
+    </StackPanel>
+</UserControl>
+
