@@ -23,7 +23,7 @@ namespace OneCore.Untils
             transfer.DataRequested += Transfer_DataRequested;
         }
 
-        private ViewModelBase VM = null;
+        private OneViewModelBase VM = null;
 
         private void Transfer_DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
         {
@@ -57,7 +57,7 @@ namespace OneCore.Untils
             }
         }
 
-        public void ShowShareUI(ViewModelBase vm)
+        public void ShowShareUI(OneViewModelBase vm)
         {
             DataTransferManager.ShowShareUI();
             this.VM = vm;

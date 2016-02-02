@@ -1,4 +1,5 @@
-﻿using OneBackgroundTask;
+﻿using GalaSoft.MvvmLight.Threading;
+using OneBackgroundTask;
 using OneCore.Models;
 using OneCore.Untils;
 using System;
@@ -41,9 +42,9 @@ namespace OneUWP
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
-            BackgroundTaskManager.Register(typeof(LiveTileTask).FullName);
 
-            
+            //注册后台任务
+            BackgroundTaskManager.Register(typeof(LiveTileTask).FullName);
         }
 
         /// <summary>

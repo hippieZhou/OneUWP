@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using OneCore.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace OneCore.Untils
     public static class DTManager
     {
         public static Dictionary<string, DataTemplate> views = new Dictionary<string, DataTemplate>();
-        public static DataTemplate GetTemplate(ViewModelBase param)
+        public static DataTemplate GetTemplate(OneViewModelBase param)
         {
             Type t = param.GetType();
             if (!views.ContainsKey(t.Name))

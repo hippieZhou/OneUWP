@@ -66,7 +66,6 @@ namespace OneCore.ViewModels
         public Exception InnerException => (Exception == null) ? null : Exception.InnerException;
         public string ErrorMessage => (InnerException == null) ? null : InnerException.Message;
 
-
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }

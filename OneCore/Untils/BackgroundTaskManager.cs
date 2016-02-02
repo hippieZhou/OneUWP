@@ -97,7 +97,7 @@ namespace OneCore.Untils
                 string TileTemplateXml = $@"<tile>
                                     <visual branding='nameAndLogo'>
                                       <binding template = 'TileMedium' hint-textStacking='center'>
-                                        <image src = '{picture.OriginalImgUrl}' placement='peek'/>
+                                        <image src='{picture.OriginalImgUrl}' placement='peek'/>
                                         <text hint-style='base' hint-align='center'>{picture.Author.Split(new char[] { '&' }).FirstOrDefault()}</text>
                                         <text hint-style='captionSubtle' hint-align='center'>{picture.Author.Split(new char[] { '&' }).LastOrDefault()}</text>
                                       </binding>
@@ -115,7 +115,7 @@ namespace OneCore.Untils
                                         <group>
                                           <subgroup hint-weight='1'/>
                                           <subgroup hint-weight='2'>
-                                            <image src = 'Assets/Square150x150Logo.scale-200.png' hint-crop='circle'/>
+                                            <image src='Assets/Square150x150Logo.scale-200.png' hint-crop='circle'/>
                                           </subgroup>
                                           <subgroup hint-weight='1'/>
                                         </group>
@@ -132,7 +132,6 @@ namespace OneCore.Untils
                 updater.EnableNotificationQueue(true);
                 updater.Clear();
 
-
                 var doc = new XmlDocument();
                 doc.LoadXml(System.Net.WebUtility.HtmlDecode(TileTemplateXml), new XmlLoadSettings()
                 {
@@ -142,7 +141,6 @@ namespace OneCore.Untils
                     ResolveExternals = false
                 });
                 updater.Update(new TileNotification(doc));
-
             }
             catch (Exception ex)
             {
@@ -158,7 +156,5 @@ namespace OneCore.Untils
         {
             
         }
-
-
     }
 }

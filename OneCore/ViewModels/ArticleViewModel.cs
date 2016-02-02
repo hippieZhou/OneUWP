@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace OneCore.ViewModels
 {
-    public class ArticleViewModel:ViewModelBase
+    public class ArticleViewModel: OneViewModelBase
     {
         private OneArticle _article;
         public OneArticle Article

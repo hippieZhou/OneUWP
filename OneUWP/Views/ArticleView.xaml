@@ -13,19 +13,19 @@
     </UserControl.Transitions>
 
     <StackPanel DataContext="{Binding Article}">
-        <StackPanel Margin="12">
+        <StackPanel  Margin="12,15,12,12">
             <TextBlock Text="{Binding ContMarketTime}" FontSize="20"/>
             <Border Height="1" Background="LightGray" Margin="0,6,0,0"/>
         </StackPanel>
-        <Grid Background="#AAF0ECEC" Margin="12" CornerRadius="8">
+        <Grid Background="#AAF0ECEC" Margin="12" CornerRadius="8" Height="48">
             <TextBlock Text="{Binding GW}" Foreground="#AAA4A4A4" TextWrapping="WrapWholeWords" Margin="6" VerticalAlignment="Center"/>
         </Grid>
         <TextBlock Text="{Binding ContTitle}" Style="{StaticResource TitleTextBlockStyle}" Margin="12,0,12,12"/>
         <StackPanel Orientation="Horizontal" Margin="12,0,12,12">
-            <TextBlock Text="作者："/>
-            <TextBlock Text="{Binding ContAuthor}"/>
+            <TextBlock Text="作者：" Foreground="#0f0f0f"/>
+            <TextBlock Text="{Binding ContAuthor}" Foreground="#0f0f0f"/>
         </StackPanel>
-        <TextBlock Text="{Binding Content,Converter={StaticResource htmlConverter}}" Margin="12" TextWrapping="Wrap"/>
+        <TextBlock Text="{Binding Content,Converter={StaticResource htmlConverter}}" Foreground="#191919" Margin="12" TextWrapping="Wrap"/>
 
         <TextBlock Text="{Binding Auth}" Margin="12" FontWeight="Bold" TextWrapping="Wrap"/>
         <TextBlock Text="{Binding ContAuthorIntroduce}" Margin="12"/>

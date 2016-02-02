@@ -13,16 +13,22 @@
     </UserControl.Transitions>
 
     <StackPanel DataContext="{Binding Question}">
-        <StackPanel Margin="12" Height="48">
+        <StackPanel  Margin="12,15,12,12">
             <TextBlock Text="{Binding QuestionMarketTime}" FontSize="20"/>
             <Border Height="1" Background="LightGray" Margin="0,6,0,0"/>
         </StackPanel>
-        <Image Source="ms-appx:///Assets/question.png" HorizontalAlignment="Center" Height="40"/>
-        <TextBlock Text="{Binding QuestionTitle}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap" Margin="12"/>
+        <StackPanel Orientation="Horizontal" Height="40" HorizontalAlignment="Center">
+            <Image Source="ms-appx:///Assets/head_00.png"/>
+            <Image Source="ms-appx:///Assets/question.png"/>
+        </StackPanel>
+        <TextBlock Text="{Binding QuestionTitle}" Style="{StaticResource SubtitleTextBlockStyle}" TextWrapping="Wrap" Margin="12"/>
         <TextBlock Text="{Binding QuestionContent}" TextWrapping="Wrap" Margin="12"/>
         <Border Height="1" Background="LightGray" Margin="12"/>
-        <Image Source="ms-appx:///Assets/answer.png" HorizontalAlignment="Center" Height="40"/>
-        <TextBlock Text="{Binding AnswerTitle}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap" Margin="12"/>
+        <StackPanel Orientation="Horizontal" Height="40" HorizontalAlignment="Center">
+            <Image Source="ms-appx:///Assets/answer.png"/>
+            <Image Source="ms-appx:///Assets/head_01.png"/>
+        </StackPanel>
+        <TextBlock Text="{Binding AnswerTitle}" Style="{StaticResource SubtitleTextBlockStyle}" TextWrapping="Wrap" Margin="12"/>
         <TextBlock Text="{Binding AnswerContent,Converter={StaticResource htmlConverter}}" TextWrapping="Wrap" Margin="12"/>
         <TextBlock Text="{Binding Editor}" TextWrapping="Wrap" Margin="12,24,12,12"/>
         <!--<HyperlinkButton Content="查看原文" NavigateUri="{Binding WebLk}" HorizontalAlignment="Right" Margin="24"/>-->

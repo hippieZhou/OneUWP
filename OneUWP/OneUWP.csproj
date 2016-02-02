@@ -133,8 +133,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\answer.png" />
+    <Content Include="Assets\background.jpg" />
+    <Content Include="Assets\head_00.png" />
+    <Content Include="Assets\head_01.png" />
     <Content Include="Assets\mail.png" />
-    <Content Include="Assets\one.png" />
     <Content Include="Assets\QRCode\android.png" />
     <Content Include="Assets\QRCode\iphone.png" />
     <Content Include="Assets\QRCode\wx.png" />

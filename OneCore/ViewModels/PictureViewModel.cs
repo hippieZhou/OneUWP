@@ -15,7 +15,7 @@ using Windows.Data.Json;
 
 namespace OneCore.ViewModels
 {
-    public class PictureViewModel:ViewModelBase
+    public class PictureViewModel: OneViewModelBase
     {
         private OnePicture _picture;
         public OnePicture Picture
@@ -23,14 +23,6 @@ namespace OneCore.ViewModels
             get { return _picture ?? (_picture = InitOnePicture().Result); }
             set { Set(ref _picture, value); }
         }
-
-        private string _oneTime;
-        public string OneTime
-        {
-            get { return _oneTime ?? (_oneTime = ServiceURL.strToday); }
-            set { Set(ref _oneTime, value); }
-        }
-
 
 
         private async Task<OnePicture> InitOnePicture()

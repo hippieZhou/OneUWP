@@ -16,19 +16,18 @@ using Windows.UI.Xaml.Controls;
 
 namespace OneCore.ViewModels
 {
-    public partial class MainViewModel:ViewModelBase
+    public partial class MainViewModel: ViewModelBase
     {
         public readonly static PictureViewModel pictureViewModel = new PictureViewModel();
         public readonly static ArticleViewModel articleViewModel = new ArticleViewModel();
         public readonly static QuestionViewModel quesstionViewModel = new QuestionViewModel();
         public readonly static ThingViewModel thingViewModel = new ThingViewModel();
-
         public readonly static AboutViewModel aboutViewModel = new AboutViewModel();
 
         public DataTemplate CurrentTemplate => Equals(null, this.CurrentViewModel) ? DTManager.GetTemplate(pictureViewModel) : DTManager.GetTemplate(CurrentViewModel);
 
-        private ViewModelBase _currentViewModel;
-        public ViewModelBase CurrentViewModel
+        private OneViewModelBase _currentViewModel;
+        public OneViewModelBase CurrentViewModel
         {
             get { return _currentViewModel ?? (_currentViewModel = pictureViewModel); }
             set
@@ -64,76 +63,47 @@ namespace OneCore.ViewModels
               {
                   Messenger.Default.Send(false, "ColoseMenu");
                   Messenger.Default.Send(obj, "HidenCommandBar");
-                  this.CurrentTime = DateTime.Parse(ServiceURL.strToday);
-                  RaisePropertyChanged("BackCmd");
-                  RaisePropertyChanged("ForwardCmd");
 
+                  #region 视图切换
                   await Window.Current.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, new Windows.UI.Core.DispatchedHandler(() =>
                    {
                        switch (obj)
                        {
                            case "图片":
-                               SwitchViewModel(ViewType.Picture);
+                               this.OneHeader = Application.Current.Resources["PictureTip"] as string;
+                               this.CurrentViewModel = pictureViewModel;
                                break;
                            case "文章":
-                               SwitchViewModel(ViewType.Article);
+                               this.OneHeader = Application.Current.Resources["ArticleTip"] as string;
+                               this.CurrentViewModel = articleViewModel;
                                break;
                            case "问题":
-                               SwitchViewModel(ViewType.Question);
+                               this.OneHeader = Application.Current.Resources["QuestionTip"] as string;
+                               this.CurrentViewModel = quesstionViewModel;
                                break;
                            case "东西":
-                               SwitchViewModel(ViewType.Thing);
+                               this.OneHeader = Application.Current.Resources["ThingTip"] as string;
+                               this.CurrentViewModel = thingViewModel;
                                break;
                            case "关于":
-                               SwitchViewModel(ViewType.About);
+                               this.OneHeader = Application.Current.Resources["AboutTip"] as string;
+                               this.CurrentViewModel = aboutViewModel;
                                break;
                            default:
                                return;
                        }
                    }));
-              }));
-            }
-        }
+                  #endregion
 
-        private void SwitchViewModel(ViewType type)
-        {
-            switch (type)
-            {
-                case ViewType.Picture:
-                    this.OneHeader = Application.Current.Resources["PictureTip"] as string;
-                    this.CurrentViewModel = pictureViewModel;
-                    break;
-                case ViewType.Article:
-                    this.OneHeader = Application.Current.Resources["ArticleTip"] as string;
-                    this.CurrentViewModel = articleViewModel;
-                    break;
-                case ViewType.Question:
-                    this.OneHeader = Application.Current.Resources["QuestionTip"] as string;
-                    this.CurrentViewModel = quesstionViewModel;
-                    break;
-                case ViewType.Thing:
-                    this.OneHeader = Application.Current.Resources["ThingTip"] as string;
-                    this.CurrentViewModel = thingViewModel;
-                    break;
-                case ViewType.About:
-                    this.OneHeader = Application.Current.Resources["AboutTip"] as string;
-                    this.CurrentViewModel = aboutViewModel;
-                    break;
-                default:
-                    return;
+                  RaisePropertyChanged("BackCmd");
+                  RaisePropertyChanged("ForwardCmd");
+              }));
             }
         }
     }
 
     public partial class MainViewModel : ViewModelBase
     {
-        private DateTime _currentTime = DateTime.Parse(ServiceURL.strToday);
-        public DateTime CurrentTime
-        {
-            get { return _currentTime; }
-            set { Set(ref _currentTime, value); }
-        }
-
         private RelayCommand _shareContentsCmd;
         public RelayCommand ShareContentsCmd
         {
@@ -159,7 +129,25 @@ namespace OneCore.ViewModels
                     GoToOneDay(1);
                 }, () =>
                 {
-                    return !Equals(this.CurrentTime, DateTime.Parse(ServiceURL.strToday));
+                    bool isCanBack = false;
+                    switch (this.CurrentViewModel.GetType().Name)
+                    {
+                        case "PictureViewModel":
+                            isCanBack = !Equals(pictureViewModel.CurrentTime, DateTime.Parse(ServiceURL.strToday));
+                            break;
+                        case "ArticleViewModel":
+                            isCanBack = !Equals(articleViewModel.CurrentTime, DateTime.Parse(ServiceURL.strToday));
+                            break;
+                        case "QuestionViewModel":
+                            isCanBack = !Equals(quesstionViewModel.CurrentTime, DateTime.Parse(ServiceURL.strToday));
+                            break;
+                        case "ThingViewModel":
+                            isCanBack = !Equals(thingViewModel.CurrentTime, DateTime.Parse(ServiceURL.strToday));
+                            break;
+                        default:
+                            break ;
+                    }
+                    return isCanBack;
                 }));
             }
         }
@@ -180,34 +168,29 @@ namespace OneCore.ViewModels
 
         private void GoToOneDay(int v)
         {
-            this.CurrentTime = this.CurrentTime.AddDays(v);
-            UpdateOne(this.CurrentViewModel, this.CurrentTime.ToString("yyyy-MM-dd"));
-            RaisePropertyChanged("BackCmd");
-            RaisePropertyChanged("ForwardCmd");
-            Debug.WriteLine(this.CurrentTime.ToString("yyyy-MM-dd"));
-        }
-
-        private void UpdateOne(ViewModelBase currentViewModel, string v)
-        {
-            var res = currentViewModel.GetType().Name;
-            switch (currentViewModel.GetType().Name)
+            switch (this.CurrentViewModel.GetType().Name)
             {
                 case "PictureViewModel":
-                    pictureViewModel.UpdatePicture(v);
+                    pictureViewModel.CurrentTime = pictureViewModel.CurrentTime.AddDays(v);
+                    pictureViewModel.UpdatePicture(pictureViewModel.CurrentTime.ToString("yyyy-MM-dd"));
                     break;
                 case "ArticleViewModel":
-                    articleViewModel.UpdateArticle(v);
+                    articleViewModel.CurrentTime = articleViewModel.CurrentTime.AddDays(v);
+                    articleViewModel.UpdateArticle(articleViewModel.CurrentTime.ToString("yyyy-MM-dd"));
                     break;
                 case "QuestionViewModel":
-                    quesstionViewModel.UpdateQuestion(v);
+                    quesstionViewModel.CurrentTime = quesstionViewModel.CurrentTime.AddDays(v);
+                    quesstionViewModel.UpdateQuestion(quesstionViewModel.CurrentTime.ToString("yyyy-MM-dd"));
                     break;
                 case "ThingViewModel":
-                    thingViewModel.UpdateThing(v);
+                    thingViewModel.CurrentTime = thingViewModel.CurrentTime.AddDays(v);
+                    thingViewModel.UpdateThing(quesstionViewModel.CurrentTime.ToString("yyyy-MM-dd"));
                     break;
                 default:
-                    return;
+                    break;
             }
-            RaisePropertyChanged("CurrentViewModel");
+            RaisePropertyChanged("BackCmd");
+            RaisePropertyChanged("ForwardCmd");
         }
     }
 }

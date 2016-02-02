@@ -13,13 +13,16 @@
     </UserControl.Transitions>
 
     <StackPanel DataContext="{Binding Thing}">
-        <StackPanel  Margin="12">
+        <StackPanel Margin="12,15,12,12">
             <TextBlock Text="{Binding Tm}" FontSize="20"/>
             <Border Height="1" Background="LightGray" Margin="0,6,0,0"/>
         </StackPanel>
         <Image Source="{Binding Bu}" Margin="12"/>
-        <TextBlock Text="{Binding Tc}" Margin="12" Style="{StaticResource TitleTextBlockStyle}"/>
-        <TextBlock Text="{Binding Tt}" Margin="12" Style="{StaticResource SubtitleTextBlockStyle}"/>
+        <TextBlock Text="{Binding Tc}" Margin="12" Style="{StaticResource SubtitleTextBlockStyle}" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="12">
+            <TextBlock Text="一一"/>
+            <TextBlock Text="{Binding Tt}"  Style="{StaticResource BodyTextBlockStyle}" />
+        </StackPanel>
         <!--<HyperlinkButton Content="查看原文" NavigateUri="{Binding Wu}" HorizontalAlignment="Right" Margin="24"/>-->
     </StackPanel>
     

@@ -14,7 +14,7 @@
 
 
     <StackPanel DataContext="{Binding Picture}">
-        <StackPanel Margin="12">
+        <StackPanel Margin="12,15,12,12">
             <TextBlock Text="{Binding HpTitle}" FontSize="20"/>
             <Border Height="1" Background="LightGray" Margin="0,6,0,0"/>
         </StackPanel>

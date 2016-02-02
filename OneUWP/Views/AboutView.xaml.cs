@@ -30,6 +30,7 @@ namespace OneUWP.Views
         {
             PackageVersion version = Package.Current.Id.Version;
             this.tbVersion.Text = $"版本：{version.Build}.{version.Major}.{version.Minor}.{version.Revision}";
+
         }
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace OneCore.ViewModels
 {
-    public class AboutViewModel:ViewModelBase
+    public class AboutViewModel: OneViewModelBase
     {
     }
 }

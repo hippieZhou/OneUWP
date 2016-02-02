@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace OneCore.ViewModels
 {
-    public class ThingViewModel:ViewModelBase
+    public class ThingViewModel: OneViewModelBase
     {
         private OneThing _thing;
 
@@ -22,6 +22,7 @@ namespace OneCore.ViewModels
             get { return _thing??(_thing = InitOneThing().Result); }
             set { Set(ref _thing, value); }
         }
+
 
         private async Task<OneThing> InitOneThing()
         {

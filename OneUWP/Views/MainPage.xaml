@@ -68,7 +68,10 @@
                 </Grid>
             </SplitView.Pane>
             <SplitView.Content>
-                <Grid Background="White">
+                <Grid>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="ms-appx:///Assets/background.jpg" Opacity="0.5"/>
+                    </Grid.Background>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
@@ -97,6 +100,16 @@
         </Popup>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
+                <VisualState x:Name="PCStatus">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="svMenu.DisplayMode" Value="Inline"/>
+                        <Setter Target="svMenu.IsPaneOpen" Value="True"/>
+                        <Setter Target="btnHamburger.Visibility" Value="Collapsed"/>
+                    </VisualState.Setters>
+                </VisualState>
                 <VisualState x:Name="TabletStatus">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}"/>

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace OneCore.ViewModels
 {
-    public class QuestionViewModel:ViewModelBase
+    public class QuestionViewModel: OneViewModelBase
     {
         private OneQuestion _question;
         public OneQuestion Question
