@@ -136,11 +136,11 @@
     <Content Include="Assets\background.jpg" />
     <Content Include="Assets\head_00.png" />
     <Content Include="Assets\head_01.png" />
-    <Content Include="Assets\mail.png" />
     <Content Include="Assets\QRCode\android.png" />
     <Content Include="Assets\QRCode\iphone.png" />
     <Content Include="Assets\QRCode\wx.png" />
     <Content Include="Assets\question.png" />
+    <Content Include="Assets\Title.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

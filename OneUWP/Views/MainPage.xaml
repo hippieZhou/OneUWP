@@ -80,10 +80,10 @@
                         <ContentControl Content="{Binding CurrentViewModel}" ContentTemplate="{Binding CurrentTemplate}" HorizontalAlignment="Center" MaxWidth="800" Margin="12,0,12,0"/>
                     </ScrollViewer>
                     <CommandBar Grid.Row="1" x:Name="cb">
-                        <AppBarButton Foreground="{StaticResource DefaultBackgroundColor}" Icon="Back" Label="Back" Command="{Binding BackCmd}"/>
-                        <AppBarButton Foreground="{StaticResource DefaultBackgroundColor}" Icon="Forward" Label="Forward" Command="{Binding ForwardCmd}"/>
+                        <AppBarButton Foreground="{StaticResource DefaultBackgroundColor}" Icon="Back" Label="明天" Command="{Binding BackCmd}"/>
+                        <AppBarButton Foreground="{StaticResource DefaultBackgroundColor}" Icon="Forward" Label="昨天" Command="{Binding ForwardCmd}"/>
                         <AppBarSeparator Opacity="0.3"/>
-                        <AppBarButton Foreground="{StaticResource DefaultBackgroundColor}" Label="Share" Command="{Binding ShareContentsCmd}">
+                        <AppBarButton Foreground="{StaticResource DefaultBackgroundColor}" Label="分享" Command="{Binding ShareContentsCmd}">
                             <AppBarButton.Icon>
                                 <FontIcon Glyph="{StaticResource ShareIcon}"/>
                             </AppBarButton.Icon>

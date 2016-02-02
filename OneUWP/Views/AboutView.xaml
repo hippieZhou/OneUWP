@@ -16,20 +16,7 @@
         <StackPanel>
             <TextBlock Text="每天只为你准备一张图片、一篇文字和一个问答" HorizontalAlignment="Center" />
             <TextBlock Text="韩寒主编和监制 原《独唱团》主创成员共同制作" HorizontalAlignment="Center"/>
-            <Grid HorizontalAlignment="Center" Margin="12">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" MaxHeight="120"/>
-                    <RowDefinition Height="*" MaxHeight="120"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" MaxWidth="120"/>
-                    <ColumnDefinition Width="*" MaxWidth="120"/>
-                </Grid.ColumnDefinitions>
-                <Image Grid.Row="0" Grid.Column="0" Source="ms-appx:///Assets/QRCode/android.png"  Margin="12"/>
-                <Image Grid.Row="0" Grid.Column="1" Source="ms-appx:///Assets/QRCode/iphone.png" Margin="12"/>
-                <Image Grid.Row="1" Grid.Column="0" Source="ms-appx:///Assets/QRCode/iphone.png" Margin="12"/>
-                <Image Grid.Row="1" Grid.Column="1" Source="ms-appx:///Assets/QRCode/wx.png" Margin="12"/>
-            </Grid>
+            <Image Grid.Row="0" Grid.Column="0" Source="ms-appx:///Assets/Title.png" Margin="12" MaxHeight="400"/>
             <TextBlock Text="- 也可搜索 -" HorizontalAlignment="Center"/>
             <TextBlock Text="&quot;韩寒一个&quot; 或 &quot;ONE一个&quot;" HorizontalAlignment="Center" Foreground="{StaticResource DefaultBackgroundColor}"/>
         </StackPanel>
